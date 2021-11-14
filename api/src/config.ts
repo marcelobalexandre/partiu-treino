@@ -8,7 +8,7 @@ import { AppModulesConfig } from '@/_boot/appModules';
 type Configuration = ServerConfig & DatabaseConfig & EnvironmentConfig & REPLConfig & SwaggerConfig & AppModulesConfig;
 
 const config: Configuration = {
-  appName: 'node-api-boilerplate',
+  appName: 'api',
   cli: process.argv.includes('--cli'),
   environment: environment(),
   repl: {
@@ -16,10 +16,10 @@ const config: Configuration = {
   },
   http: {
     host: envString('HOST', 'localhost'),
-    port: envNumber('PORT', 3000),
+    port: envNumber('PORT', 3001),
   },
   swagger: {
-    title: 'Blog API',
+    title: 'API',
     version: '1.0.0',
     basePath: '/api',
     docEndpoint: '/api-docs',
