@@ -21,6 +21,7 @@ const config: Configuration = {
   swagger: {
     title: 'API',
     version: '1.0.0',
+    host: envString('SWAGGER_HOST', envString('HOST', 'localhost')),
     basePath: '/api',
     docEndpoint: '/api-docs',
   },

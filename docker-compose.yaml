@@ -2,32 +2,35 @@ version: "3.9"
 
 services:
   web:
-    build: ./web
     container_name: web
+    image: node:16.13
     depends_on:
       - api
-    command: yarn dev
+    command: bash -c "yarn install && yarn dev"
+    working_dir: /web
     volumes:
       - ./web:/web
     ports:
       - 3000:3000
 
   api:
-    build: ./api
     container_name: api
+    image: node:16.13
     depends_on:
-      - db
-    command: yarn dev
+      - mongodb
+    command: bash -c "yarn install && yarn dev"
+    working_dir: /api
     volumes:
       - ./api:/api
     ports:
       - 3001:3001
     environment:
-      - HOST=0.0.0.0
-      - DB_HOST=mongodb://db:27017
+      HOST: 0.0.0.0
+      SWAGGER_HOST: localhost
+      DB_HOST: mongodb://mongodb:27017
 
-  db:
-    container_name: db
+  mongodb:
+    container_name: mongodb
     image: mongo:4.2
     ports:
       - 27017:27017
