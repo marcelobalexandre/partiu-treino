@@ -1,11 +1,12 @@
 import { REPLConfig } from '@/_boot/repl';
 import { environment, EnvironmentConfig, envNumber, envString } from '@/_lib/Environment';
 import { ServerConfig } from '@/_boot/server';
-import { DatabaseConfig } from '@/_boot/database';
+import { MongoConfig } from '@/_boot/mongo';
+import { PostgresConfig } from '@/_boot/postgres';
 import { SwaggerConfig } from '@/_boot/swagger';
 import { AppModulesConfig } from '@/_boot/appModules';
 
-type Configuration = ServerConfig & DatabaseConfig & EnvironmentConfig & REPLConfig & SwaggerConfig & AppModulesConfig;
+type Configuration = ServerConfig & MongoConfig & PostgresConfig & EnvironmentConfig & REPLConfig & SwaggerConfig & AppModulesConfig;
 
 const config: Configuration = {
   appName: 'api',
@@ -26,11 +27,18 @@ const config: Configuration = {
     docEndpoint: '/api-docs',
   },
   mongodb: {
-    database: envString('DB_NAME', 'blog'),
-    host: envString('DB_HOST', 'mongodb://localhost:27017'),
-    username: envString('DB_USER', 'blog'),
-    password: envString('DB_PASS', 'blog'),
+    database: envString('MONGODB_NAME', 'blog'),
+    host: envString('MONGODB_HOST', 'mongodb://localhost:27017'),
+    username: envString('MONGODB_USER', 'blog'),
+    password: envString('MONGODB_PASS', 'blog'),
   },
+  postgres: {
+    host: envString('POSTGRES_HOST', 'postgres'),
+    port: envNumber('POSTGRES_PORT', 5432),
+    username: envString('POSTGRES_USER', 'postgres'),
+    password: envString('POSTGRES_PASS', 'postgres'),
+    database: envString('POSTGRES_DB', 'partiu_treino_dev')
+  }
 };
 
 export { config };

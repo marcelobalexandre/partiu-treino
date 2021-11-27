@@ -3,7 +3,7 @@ import { makeMongoProvider, MongoProvider } from '@/_lib/MongoProvider';
 import { asValue } from 'awilix';
 import { Db, MongoClient } from 'mongodb';
 
-type DatabaseConfig = {
+type MongoConfig = {
   mongodb: {
     database: string;
     host: string;
@@ -12,7 +12,7 @@ type DatabaseConfig = {
   };
 };
 
-const database = makeModule('database', async ({ container: { register }, config: { mongodb } }) => {
+const mongo = makeModule('mongo', async ({ container: { register }, config: { mongodb } }) => {
   const client = new MongoClient(mongodb.host, {
     auth: { username: mongodb.username, password: mongodb.password },
   });
@@ -38,5 +38,5 @@ type DatabaseRegistry = {
   mongoProvider: MongoProvider;
 };
 
-export { database };
-export type { DatabaseRegistry, DatabaseConfig };
+export { mongo };
+export type { DatabaseRegistry, MongoConfig };

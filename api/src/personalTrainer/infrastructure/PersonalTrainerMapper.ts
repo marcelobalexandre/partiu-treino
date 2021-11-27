@@ -6,7 +6,7 @@ import { from } from 'uuid-mongodb';
 
 const PersonalTrainerMapper: DataMapper<PersonalTrainer.Type, PersonalTrainerSchema> = {
   toData: (entity: PersonalTrainer.Type) => ({
-    _id: from(entity.id.value),
+    id: entity.id.value,
     name: entity.name,
     email: entity.email,
     password: entity.password,

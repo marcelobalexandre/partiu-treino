@@ -1,6 +1,6 @@
 import { createContainer } from 'awilix';
 import { MainRegistry } from '@/_boot';
-import { DatabaseRegistry } from '@/_boot/database';
+import { DatabaseRegistry } from '@/_boot/mongo';
 import { ServerRegistry } from '@/_boot/server';
 import { PubSubRegistry } from '@/_boot/pubSub';
 import { AppModulesRegistry } from '@/_boot/appModules';

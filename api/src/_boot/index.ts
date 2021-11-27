@@ -1,7 +1,8 @@
 import { server } from '@/_boot/server';
 import { appModules } from '@/_boot/appModules';
 import { asValue } from 'awilix';
-import { database } from '@/_boot/database';
+import { mongo } from '@/_boot/mongo';
+import { postgres } from '@/_boot/postgres';
 import { repl } from '@/_boot/repl';
 import { withContext } from '@/context';
 import { Configuration } from '@/config';
@@ -19,7 +20,7 @@ const main = withContext(async ({ app, container, config, bootstrap, logger, mes
     config: asValue(config),
   });
 
-  await bootstrap(database, server, swagger, pubSub, repl, ...appModules);
+  await bootstrap(mongo, postgres, server, swagger, pubSub, repl, ...appModules);
 });
 
 type MainRegistry = {

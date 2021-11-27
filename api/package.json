@@ -14,10 +14,13 @@
     "joi": "^17.4.1",
     "lodash.template": "^4.5.0",
     "mongodb": "^4.0.0",
+    "pg": "^8.7.1",
     "pino": "^6.12.0",
     "pino-http": "^5.5.0",
+    "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6",
+    "typeorm": "^0.2.41",
     "types-joi": "^2.1.0",
     "uuid": "^8.3.2",
     "uuid-mongodb": "^2.4.4"
@@ -58,7 +61,8 @@
     "debug": "tsnd --transpile-only --inspect --files src/index.ts | pino-pretty -c -l",
     "cli": "tsnd --transpile-only --files src/index.ts --cli",
     "remote": "ts-node bin/replClient.ts",
-    "test": "jest"
+    "test": "jest",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
   },
   "jest": {
     "moduleFileExtensions": [

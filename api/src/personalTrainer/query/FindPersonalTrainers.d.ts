@@ -8,8 +8,7 @@ type PersonalTrainerListItemDTO = Readonly<{
 }>;
 
 type PersonalTrainerFilter = {
-  title?: string;
-  publishedBetween?: Date[];
+  name?: string;
 };
 
 type FindPersonalTrainers = QueryHandler<SortedPaginatedQuery<PersonalTrainerFilter>, PaginatedQueryResult<PersonalTrainerListItemDTO[]>>;

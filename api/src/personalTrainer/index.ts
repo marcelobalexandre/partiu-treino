@@ -2,7 +2,7 @@ import { asFunction } from 'awilix';
 import { CreatePersonalTrainer, makeCreatePersonalTrainer } from '@/personalTrainer/application/useCases/CreatePersonalTrainer';
 import { PersonalTrainerRepository } from '@/personalTrainer/domain/PersonalTrainerRepository';
 import { PersonalTrainerCollection, initPersonalTrainerCollection } from '@/personalTrainer/infrastructure/PersonalTrainerCollection';
-import { makeMongoPersonalTrainerRepository } from '@/personalTrainer/infrastructure/MongoPersonalTrainerRepository';
+import { makePostgresPersonalTrainerRepository } from '@/personalTrainer/infrastructure/PostgresPersonalTrainerRepository';
 import { makePersonalTrainerController } from '@/personalTrainer/interface/http/personalTrainerController';
 import { FindPersonalTrainers } from '@/personalTrainer/query/FindPersonalTrainers';
 import { withMongoProvider } from '@/_lib/MongoProvider';
@@ -24,7 +24,7 @@ const personalTrainerModule = makeModule(
 
     register({
       ...toContainerValues(collections),
-      personalTrainerRepository: asFunction(makeMongoPersonalTrainerRepository),
+      personalTrainerRepository: asFunction(makePostgresPersonalTrainerRepository),
       createPersonalTrainer: asFunction(makeCreatePersonalTrainer),
       findPersonalTrainers: asFunction(makeMongoFindPersonalTrainers),
     });
